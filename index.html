@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="answer"></div>
+      <div><input type="text" placeholder="0" /></div>
+      <div class="calculator-keys">
+        <button data-action="clear-all" class="other">AC</button>
+        <button data-action="clear-entry" class="other">CE</button>
+        <button data-action="random" class="other">😎</button>
+        <button data-action="divide" class="operator-key">÷</button>
+        <button class="number-key">7</button>
+        <button class="number-key">8</button>
+        <button class="number-key">9</button>
+        <button data-action="multiply" class="operator-key">x</button>
+        <button class="number-key">4</button>
+        <button class="number-key">5</button>
+        <button class="number-key">6</button>
+        <button data-action="subtract" class="operator-key">-</button>
+        <button class="number-key">1</button>
+        <button class="number-key">2</button>
+        <button class="number-key">3</button>
+        <button data-action="add" ="" class="operator-key">+</button>
+        <button class="number-key">00</button>
+        <button class="number-key">0</button>
+        <button data-action="decimal" class="number-key">.</button>
+        <button
+          style="background-color: coral"
+          data-action="calculate"
+          class="equal-key"
+        >
+          =
+        </button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

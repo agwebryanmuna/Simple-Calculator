@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(72, 71, 71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculator {
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgb(42, 42, 42);
+}
+
+.calculator .answer {
+  margin-top: 30px;
+  font-size: 35px;
+  text-align: right;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.calculator input {
+  border: none;
+  outline: none;
+  color: rgb(220, 219, 219);
+  background-color: transparent;
+  text-align: right;
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.calculator .calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.calculator button {
+  border: none;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  font-weight: bold;
+}
+
+.calculator .operator-key {
+  background-color: orange;
+}
+
+.calculator .number-key {
+  background-color: rgb(72, 71, 71);
+}
+
+.tap {
+  animation-name: tap;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes tap {
+  0%,
+  100% {
+    background-color: rgb(199, 194, 194);
+  }
+}

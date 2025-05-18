@@ -6,50 +6,26 @@ const answer = document.querySelector(".answer");
 
 const operations = "+-x÷";
 
+// Main function.
 calculator.addEventListener("click", (e) => {
+  // Check what tag the user clicked on
   if (e.target.tagName === "BUTTON") {
     const key = e.target;
     const keyValue = e.target.textContent;
     const keyAction = key.dataset.action;
     let inputValue = input.value; // initially empty ("")
 
-    if (!keyAction) {
-      inputValue = insertNumber(keyValue, inputValue);
-      updateInput(inputValue);
-    }
-    if (keyAction === "decimal") {
-      inputValue = insertDecimal(inputValue);
-      updateInput(inputValue);
-    }
-    if (keyAction === "random") {
-      inputValue = insertRandomNumber(inputValue);
-      updateInput(inputValue);
-    }
+    // Checks the keyActions and does a corresponding action
+    insertKey(keyAction, keyValue, inputValue);
+
     if (keyAction === "clear-all") {
       inputValue = "";
       answer.textContent = "";
       updateInput(inputValue);
     }
-    if (keyAction === "clear-entry") {
-      inputValue = clearEntry(inputValue);
-      updateInput(inputValue);
-    }
+
     if (keyAction === "calculate") {
       calculate(inputValue);
-    }
-
-    if (keyAction === "divide") {
-      inputValue = divide(inputValue);
-      updateInput(inputValue);
-    } else if (keyAction === "multiply") {
-      inputValue = multiply(inputValue);
-      updateInput(inputValue);
-    } else if (keyAction === "subtract") {
-      inputValue = subtract(inputValue);
-      updateInput(inputValue);
-    } else if (keyAction === "add") {
-      inputValue = add(inputValue);
-      updateInput(inputValue);
     }
   }
 });
@@ -59,6 +35,8 @@ const insertNumber = (number, inputValue) => inputValue + number;
 
 // Insert Decimal
 const insertDecimal = (inputValue) => {
+  // Main problem: User could input 3.33.33....3
+
   const prevEntry = getPreviousEntry(inputValue);
   const isEmpty = inputIsEmpty();
 
@@ -68,6 +46,7 @@ const insertDecimal = (inputValue) => {
     return (inputValue += "0.");
   }
 
+  // if inputValue has operations but already has a decimal point after 1+2.33
   if (inputValue.includes(operations)) {
     let temp = "";
     for (let i = inputValue.length - 1; i >= 0; i--) {
@@ -84,6 +63,7 @@ const insertDecimal = (inputValue) => {
     }
   }
 
+  // If there are no operations in the inputValue yet
   if (inputValue.includes(".")) return inputValue;
 
   return (inputValue += ".");
@@ -96,18 +76,50 @@ const insertRandomNumber = (inputValue) => {
 };
 
 // Insert ÷
-const divide = (inputValue) =>
-  inputIsEmpty() ? inputValue : (inputValue += "÷");
+const divide = (keyValue, inputValue) =>
+  inputIsEmpty() ? inputValue : (inputValue += keyValue);
 
 // Insert x
-const multiply = (inputValue) =>
-  inputIsEmpty() ? inputValue : (inputValue += "x");
+const multiply = (keyValue, inputValue) =>
+  inputIsEmpty() ? inputValue : (inputValue += keyValue);
 
 // Insert -
-const subtract = (inputValue) => (inputValue += "-");
+const subtract = (keyValue, inputValue) => (inputValue += keyValue);
 
 // Insert +
-const add = (inputValue) => (inputIsEmpty() ? inputValue : (inputValue += "+"));
+const add = (keyValue, inputValue) =>
+  inputIsEmpty() ? inputValue : (inputValue += keyValue);
+
+// Insert any key
+const insertKey = (keyAction, keyValue, inputValue) => {
+  if (!keyAction) {
+    inputValue = insertNumber(keyValue, inputValue);
+  }
+
+  if (keyAction === "decimal") {
+    inputValue = insertDecimal(inputValue);
+  }
+
+  if (keyAction === "random") {
+    inputValue = insertRandomNumber(inputValue);
+  }
+
+  if (keyAction === "clear-entry") {
+    inputValue = clearEntry(inputValue);
+  }
+
+  if (keyAction === "divide") {
+    inputValue = divide(keyValue, inputValue);
+  } else if (keyAction === "multiply") {
+    inputValue = multiply(keyValue, inputValue);
+  } else if (keyAction === "subtract") {
+    inputValue = subtract(keyValue, inputValue);
+  } else if (keyAction === "add") {
+    inputValue = add(keyValue, inputValue);
+  }
+
+  updateInput(inputValue);
+};
 
 // Clear entry
 const clearEntry = (inputValue) => {
@@ -117,10 +129,14 @@ const clearEntry = (inputValue) => {
 
 // calculate result
 const calculate = (inputValue) => {
+  const lastChar = getPreviousEntry(inputValue);
+
+  if (operations.includes(lastChar)) return;
+
   const formatInput1 = inputValue.replace("÷", "/"); // JS ÷ = /
   const formatInput2 = formatInput1.replace("x", "*"); // JS x = *
 
-  const result = eval(formatInput2);
+  const result = parseFloat(eval(formatInput2)).toFixed(2);
 
   answer.textContent = result;
 };

@@ -1,10 +1,10 @@
-# ## Vanilla Javascript Projects
+## Vanilla Javascript Projects
 
-# A collection of simple projects built with vanilla JavaScript.
+A collection of simple projects built with vanilla JavaScript.
 
-# Each project is designed to be a standalone application, showcasing different features and functionalities of JavaScript.
+Each project is designed to be a standalone application, showcasing different features and functionalities of JavaScript.
 
-# Feel free to explore, modify, and use these projects as a reference for your own work.
+Feel free to explore, modify, and use these projects as a reference for your own work.
 
 ## Features
 
@@ -17,20 +17,18 @@
 - Basic styling using CSS
 - Simple and intuitive user interfaces
 
-# ## Projects (...so far 😅)
+## Projects (...so far 😅)
 
-# 1. [Calculator](./calculator)
+1. [Calculator](./calculator)
 
-# 2. [Swiper](./swiper)
+2. [Swiper](./swiper)
 
-# ## Screenshots
+## Screenshots
 
-# ![Calculator](./screenshots/calculator.png)
+![Calculator](./screenshots/calculator.png)
 
-# ![Swiper](./screenshots/swiper.png)
+![Swiper](./screenshots/swiper.png)
 
-# ## How to clone this repo
+## How to clone this repo
 
-# ```bash
-
-# git clone https://github.com/agwebryanmuna/Vanilla-Javascript-projects.git
+git clone https://github.com/agwebryanmuna/Vanilla-Javascript-projects.git

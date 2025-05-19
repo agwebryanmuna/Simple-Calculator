@@ -88,6 +88,7 @@ const totalQuestions = document.querySelector(".total-questions");
 const timeLeft = document.querySelector(".seconds");
 const mainContent = document.querySelector(".main-content");
 const progressBar = document.querySelector(".progress-bar");
+const footer = document.querySelector("footer");
 
 let questionIndex = 0;
 let correctAnswerCount = 0;
@@ -95,7 +96,7 @@ let wrongAnswerCount = 0;
 totalQuestions.textContent = QUIZ_DATA.length;
 let nextButtonHandler = null;
 
-// show questions
+// get 1 question questions
 const loadQuestion = (qIndex) => {
   const question = QUIZ_DATA[qIndex];
   const lis = question.choices.map((choice) => `<li>${choice}</li>`).join("");
@@ -135,6 +136,9 @@ const startQuestion = (qIndex, qAnswer) => {
     stopQuestion(qIndex, qAnswer, userAnswer);
   }, 10000);
 
+  // the button never changes, unlike the lis, event listener accumulates and causes
+  // stopQuestion() to execute multiple times
+  // (This is not an AI prompt but for future references)
   if (nextButtonHandler) {
     button.removeEventListener("click", nextButtonHandler);
   }
@@ -157,12 +161,25 @@ const stopQuestion = (qIndex, qAnswer, userAnswer) => {
   updateDOM(qIndex + 1);
 };
 
+const displayCongratsPage = (correctAnswerCount, wrongAnswerCount) => {
+  const score = (correctAnswerCount / QUIZ_DATA.length) * 100;
+  mainContent.innerHTML = `
+  <h2 class="congrats">CONGRATULATIONS 🎉🎉🎉</h2>
+        <div class="score-container">
+          <div class="score">${score}</div>
+          <div>Score</div>
+          <div class="correct-answers">Correct answers: ${correctAnswerCount}</div>
+          <div class="wrong-answers">Wrong answers: ${wrongAnswerCount}</div>
+        </div>
+  `;
+};
+
 const updateDOM = (qIndex) => {
   if (qIndex === 10) {
-    console.log("Congratulations! You have come to the end of the quiz");
-    console.log("correct answers: ", correctAnswerCount);
-    console.log("wrong answers: ", wrongAnswerCount);
-    console.log("score: ", `${correctAnswerCount}/10`);
+    timeLeft.previousElementSibling.textContent = "Time";
+    timeLeft.textContent = "0s";
+    footer.classList.add("hidden");
+    displayCongratsPage(correctAnswerCount, wrongAnswerCount);
     return;
   }
 
@@ -170,7 +187,7 @@ const updateDOM = (qIndex) => {
 
   mainContent.innerHTML = mappedQuestion;
   currentQuestion.textContent = qIndex + 1;
-  progressBar.style.width = `${((qIndex + 1) / QUIZ_DATA.length) * 100}%`;
+  progressBar.style.width = `${((qIndex + 1) / QUIZ_DATA.length) * 100}%`; // loved making this 😍
 
   startQuestion(qIndex, questionAnswer);
 };
@@ -182,6 +199,8 @@ updateDOM(questionIndex);
  * function to start question and timer ✅
  * when timer is up  record user answer and show next question ✅
  * when next button clicked  record user answer and show next question ✅
- * update progress bar (index/10)*100
- * if user doesn't select a question the answer is false
+ * update progress bar (index/10)*100 ✅
+ * if user doesn't select a question the answer is false ✅
+ * Display congratulations page ✅
+ * Miss anything 🤔?? Help me!
  */

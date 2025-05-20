@@ -98,8 +98,3 @@ todosDOM.addEventListener("click", (e) => {
 addBtn.addEventListener("click", () => {
   Todo.addTodo();
 });
-
-/** TODO
- * What happens if user enters a very long title
- * problem: cannot add and clear without reloading browser
- */

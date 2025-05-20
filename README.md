@@ -25,7 +25,7 @@ Feel free to explore, modify, and use these projects as a reference for your own
 
 ## Screenshots
 
-![Calculator](./screenshots/calculator.png)![Swiper](./screenshots/swiper.png)[Quiz](./screenshots/quiz-app.png)
+![Calculator](./screenshots/calculator.png)![Swiper](./screenshots/swiper.png)![Quiz](./screenshots/quiz-app.png)
 
 ## How to clone this repo
 

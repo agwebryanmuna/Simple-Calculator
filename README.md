@@ -23,6 +23,8 @@ Feel free to explore, modify, and use these projects as a reference for your own
 
 2. [Swiper](./swiper)
 
+3. [Quiz](./quiz-app/)
+
 ## Screenshots
 
 ![Calculator](./screenshots/calculator.png)![Swiper](./screenshots/swiper.png)![Quiz](./screenshots/quiz-app.png)

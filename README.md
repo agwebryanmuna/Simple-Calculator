@@ -25,9 +25,11 @@ Feel free to explore, modify, and use these projects as a reference for your own
 
 3. [Quiz](./quiz-app/)
 
+4. [TodoList](./todo-app/)
+
 ## Screenshots
 
-![Calculator](./screenshots/calculator.png)![Swiper](./screenshots/swiper.png)![Quiz](./screenshots/quiz-app.png)
+![Calculator](./screenshots/calculator.png)![Swiper](./screenshots/swiper.png)![Quiz](./screenshots/quiz-app.png)![Todo](./screenshots/todo.png)
 
 ## How to clone this repo
 
